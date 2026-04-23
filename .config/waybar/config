@@ -1,4 +1,5 @@
 {
+        "output": "DP-3",
         "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
@@ -17,7 +18,7 @@
         ],
         "custom/nusnextbus": {
             "format": "{}",
-            "exec": "pidof hyprlock || ~/scripts/query_nus_nextbus.py LT27 | awk '{printf \"%s | \", $0} END {print \"\"}'",
+            "exec": "pidof -q hyprlock || ~/scripts/query_nus_nextbus.py LT27 | awk '{printf \"%s | \", $0} END {print \"\"}'",
             "interval": 17
         },
         "pulseaudio": {
@@ -61,7 +62,7 @@
             "escape": true
         },
         "clock": {
-            "format": "{:%b %e  %I:%M %p} ",
+            "format": "{:%b %e %a  %I:%M %p} ",
             "interval": 10,
             "tooltip-format": "<tt>{calendar}</tt>",
             "calendar": {
