@@ -1,25 +1,52 @@
 {
-        //"output": "DP-3",
+        // "output": "DP-3",
         "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["hyprland/workspaces", "custom/nusnextbus"],
+        "modules-left": ["hyprland/workspaces"],
         "modules-center": ["clock"],
         "modules-right": [
             "group/expand",
             "tray",
             "custom/polycat",
+            "memory",
+            "custom/gpu",
             "custom/cliphist",
+            "custom/hdr_brightness",
+            "custom/hdr_saturation",
             "pulseaudio",
             "bluetooth",
             "network",
             "custom/pacman",
             "custom/notification"
         ],
-        "custom/nusnextbus": {
+        "custom/gpu": {
+            "format": "{icon} {text}",
+            "exec": "gpu-usage-waybar",
+            "return-type": "json",
+            "format-icons": "󰾲",
+            "on-click": "kitty nvtop"
+        },
+        "custom/hdr_brightness": {
+            "exec": "~/scripts/hdr_control.sh brightness get",
+            "interval": "once",
+            "signal": 10,
+            "on-scroll-up": "~/scripts/hdr_control.sh brightness up && pkill -RTMIN+10 waybar",
+            "on-scroll-down": "~/scripts/hdr_control.sh brightness down && pkill -RTMIN+10 waybar",
+            "format": "󰖨 {}",
+            "tooltip": true,
+            "tooltip-format": "brightness"
+        },
+
+        "custom/hdr_saturation": {
+            "exec": "~/scripts/hdr_control.sh saturation get",
+            "interval": "once",
+            "signal": 11,
+            "on-scroll-up": "~/scripts/hdr_control.sh saturation up && pkill -RTMIN+11 waybar",
+            "on-scroll-down": "~/scripts/hdr_control.sh saturation down && pkill -RTMIN+11 waybar",
             "format": "{}",
-            "exec": "pidof -q hyprlock || ~/scripts/query_nus_nextbus.py LT27 | awk '{printf \"%s | \", $0} END {print \"\"}'",
-            "interval": 17
+            "tooltip": true,
+            "tooltip-format": "saturation"
         },
         "pulseaudio": {
             "format": "{icon} {volume}%",
@@ -31,7 +58,7 @@
         },
         "custom/cliphist": {
             "format": "󰅍 {}",
-            "max-length": 30,
+            "max-length": 15,
             "interval": 1,
             "exec": "cliphist list | head -n 1 | cut -f 2-",
             "on-click": "sh -c '~/.config/wofi/scripts/cliphist-wofi-img | wl-copy'",
@@ -42,6 +69,7 @@
         "custom/polycat": {
             "format": "{}",
             "exec": "polycat",
+            "on-click": "kitty htop -s PERCENT_CPU",
             "tooltip": false
         },
         "hyprland/workspaces": {
@@ -140,7 +168,7 @@
                 "transition-to-left": true,
                 "click-to-reveal": true
             },
-            "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature","custom/endpoint"]
+            "modules": ["custom/expand", "custom/colorpicker", "custom/endpoint"]
         },
         "custom/colorpicker": {
             "format": "{}",
@@ -150,12 +178,10 @@
             "on-click": "~/.config/waybar/scripts/colorpicker.sh",
             "signal": 1
         },
-        "cpu": {
-            "format": "󰻠",
-            "tooltip": true
-        },
         "memory": {
-            "format": ""
+            "format": " {used:0.1f}G",
+            "on-click": "kitty htop -s PERCENT_MEM",
+            "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
         },
         "temperature": {
             "critical-threshold": 80,
