@@ -9,21 +9,21 @@ window#waybar{
 }
 .modules-left {
     padding:7px;
-    margin:10 0 1 15;
+    margin:10px 0 1px 15px;
     border-radius:10px;
     background: alpha(@background,.6);
     box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
 }
 .modules-center {
     padding:7px;
-    margin:10 0 1 0;
+    margin:10px 0 1px 0;
     border-radius:10px;
     background: alpha(@background,.6);
     box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
 }
 .modules-right {
     padding:7px;
-    margin: 10 15 1 0;
+    margin: 10px 15px 1px 0;
     border-radius:10px;
     background: alpha(@background,.6);
     box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
@@ -32,7 +32,7 @@ tooltip {
     background:@background;
     color: @color6;
 }
-#clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
+#clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover,#custom-gpu:hover,#custom-polycat:hover{
     transition: all .3s ease;
     color:@color9;
 }
@@ -57,7 +57,7 @@ tooltip {
     color:@color6;
 }
 #custom-cliphist {
-    padding: 0px 5px;
+    padding: 0px 10px;
     transition: all .3s ease;
     color:@color5;
 }
@@ -67,12 +67,16 @@ tooltip {
     font-family: "polycat";
 }
 
-#custom-nusnextbus {
+#custom-hdr_brightness {
     padding: 0px 5px;
     margin-left: 10px;
     color: @color6;
-    background: rgba(64, 64, 64, 0.25);
-    border-radius: 5px;
+}
+
+#custom-hdr_saturation {
+    padding: 0px 5px;
+    margin-right: 10px;
+    color: @color6;
 }
 
 #workspaces {
@@ -163,7 +167,7 @@ tooltip {
 #custom-colorpicker{
     padding: 0px 5px;
 }
-#cpu,#memory,#temperature{
+#cpu, #memory, #temperature, #custom-gpu{
     padding: 0px 5px;
     transition: all .3s ease; 
     color:@color6;
