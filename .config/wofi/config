@@ -11,3 +11,4 @@ insensitive=true
 print_command=true
 hide_scroll=true
 no_actions=true
+close_on_focus_loss=true
