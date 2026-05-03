@@ -6,6 +6,8 @@ swaync waybar cliphist pacman-contrib
 
 pavucontrol
 
+greetd-tuigreet-fork-bin (AUR)
+
 ## Font for waybar
 
 "CodeNewRoman Nerd Font Propo" (otf-codenewroman-nerd)
